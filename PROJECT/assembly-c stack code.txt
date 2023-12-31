@@ -1,0 +1,27 @@
+void push_data_to_stack(int array[], int size) {
+    int i;
+
+    // Guardar dados na stack
+    for (i = 0; i < size; i++) {
+        asm volatile (
+            "pushl %[value]"
+            :
+            : [value] "r" (array[i])
+        );
+    }
+}
+
+
+void pull_data_from_stack(int array[], int size) {
+    int value;
+
+    // Retirar os dados da stack pela ordem inversa
+    for (i = size - 1; i >= 0; i--) {
+        
+        asm volatile (
+            "popl %[value]"
+            : [value] "=r" (value)
+        );
+	array[i] = value
+    }
+}
