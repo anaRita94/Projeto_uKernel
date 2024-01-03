@@ -1,5 +1,6 @@
-void push_data_to_stack(int array[], int size) {
+uint16_t push_data_to_stack(int array[], int size) {
     int i;
+    uint16_t endereco_SP;
 
     // Guardar dados na stack
     for (i = 0; i < size; i++) {
@@ -9,11 +10,14 @@ void push_data_to_stack(int array[], int size) {
             : [value] "r" (array[i])
         );
     }
+    endereco_SP = SP;
+	return endereco_SP;
 }
 
 
-void pull_data_from_stack(int array[], int size) {
-    int value;
+uint16_t pull_data_from_stack(int array[], int size, uint16_t endereco_SP) {
+    int value, i;
+    SP = endereco_SP;
 
     // Retirar os dados da stack pela ordem inversa
     for (i = size - 1; i >= 0; i--) {
@@ -22,6 +26,10 @@ void pull_data_from_stack(int array[], int size) {
             "popl %[value]"
             : [value] "=r" (value)
         );
-	array[i] = value
+	array[i] = value;
     }
+
+    endereco_SP = SP;
+    return endereco_SP;
 }
+
