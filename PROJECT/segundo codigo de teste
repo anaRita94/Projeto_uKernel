@@ -74,5 +74,5 @@ if(dois.variaveis[1] == um.variaveis[1])
 Serial.println("OK ");
 
 else
-Serial.print("Not OK :(");
+Serial.println("Not OK :(");
 }
