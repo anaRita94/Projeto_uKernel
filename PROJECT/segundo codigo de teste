@@ -41,7 +41,7 @@ typedef struct {
 } processo;
 
 processo um, dois;
-
+int a,b;
 
 void setup() {
   // put your setup code here, to run once:
@@ -52,12 +52,14 @@ um.variaveis[1] = 3;
 dois.variaveis[0] = 10;
 dois.variaveis[1] = 20;
 
+a = 2;
+b = 3;
 
 }
 
 void loop() {
-  um.variaveis[0] = um.variaveis[0] + 1;
-  um.variaveis[1] = um.variaveis[1] + 2;
+  um.variaveis[0] = a + 1;
+  um.variaveis[1] = b + 2;
   // put your main code here, to run repeatedly:
 um.endereco_stack = push_data_to_stack(um.variaveis, um.tamanho);
 
